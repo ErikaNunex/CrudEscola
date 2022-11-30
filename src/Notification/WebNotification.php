@@ -17,14 +17,14 @@ class WebNotification
         if(isset($_SESSION['success'])){
             $type= 'success';
         $message= $_SESSION['success'];
-        include '../Views/template/notification.phtml';
+        include dirname(__DIR__).'/Views/template/notification.phtml';
         unset($_SESSION['success']);
         }
 
         if(isset($_SESSION['danger'])){
             $type= 'danger';
         $message= $_SESSION['danger'];
-        include '../Views/template/notification.phtml';
+        include dirname(__DIR__).'/Views/template/notification.phtml';
         unset($_SESSION['danger']);
         }
        

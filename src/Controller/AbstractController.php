@@ -14,13 +14,13 @@ abstract class AbstractController
             extract($dados);
         }
 
-        include_once '../views/template/header.phtml';
+        include_once dirname(__DIR__).'/views/template/header.phtml';
 
-        $navbar === true && include_once '../views/template/menu.phtml';
+        $navbar === true && include_once dirname(__DIR__).'/views/template/menu.phtml';
 
-        include_once "../views/{$view}.phtml";
+        include_once dirname(__DIR__)."/views/{$view}.phtml";
 
-        include_once '../views/template/footer.phtml';
+        include_once dirname(__DIR__).'/views/template/footer.phtml';
     }
 
     public function redirect(string $local):void
