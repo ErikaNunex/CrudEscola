@@ -7,7 +7,7 @@ class SiteController extends AbstractController
 {
     public function inicio(): void
     {
-        $this->checkLogin();
+        $this->redirect('/login');
     }
 
     
