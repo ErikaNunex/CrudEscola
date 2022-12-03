@@ -37,7 +37,7 @@ class AlunoController extends AbstractController
             $this->render('aluno/cadastrar');
             return;
         }
-
+ 
         $aluno = new Aluno();
         $aluno->nome = $_POST['nome'];
         $aluno->dataNascimento = $_POST['nascimento'];

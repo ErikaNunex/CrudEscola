@@ -19,7 +19,7 @@ CREATE TABLE tb_professores (
     formacao VARCHAR(45) NOT NULL,
     status TINYINT NOT NULL,
     nome VARCHAR(100) NOT NULL,
-    cpf CHAR(11) UNIQUE NOT NULL
+    cpf CHAR(11) UNIQUE NOT NULL 
 );
 
 

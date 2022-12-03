@@ -10,7 +10,10 @@
             <tr>
                 <th>#ID</th>
                 <th>Nome</th>
+                <th>Fromação</th>
+                <th>Endereço</th>
                 <th>CPF</th>
+                <th>Status</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -22,7 +25,10 @@
                             <tr>
                                 <td>{$professor->id}</td>
                                 <td>{$professor->nome}</td>
+                                <td>{$professor->formacao}</td>
+                                <td>{$professor->endereco}</td>
                                 <td>{$professor->cpf}</td>
+                                <td>{$professor->status}</td>
                                 <td>
                                     <a href='/professores/editar?id={$professor->id}' class='btn btn-warning'>Editar</a>
                                     <a href='/professores/excluir?id={$professor->id}' class='btn btn-danger'>Deletar</a>

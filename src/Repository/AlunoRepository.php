@@ -10,6 +10,7 @@ use PDO;
 
 class AlunoRepository implements RepositoryInterface
 {
+    
     public const TABLE = 'tb_alunos';
 
     public PDO $pdo;
@@ -63,9 +64,9 @@ class AlunoRepository implements RepositoryInterface
 
     public function atualizar(object $novosDados, string $id): object
     {
-        $sql = "UPDATE " . self::TABLE . 
+        $sql = "UPDATE " . self::TABLE .  
             " SET 
-                nome='{$novosDados->nome}',
+                nome='{$novosDados->nome}', 
                 email='{$novosDados->email}',
                 cpf='{$novosDados->cpf}',
                 dataNascimento='{$novosDados->dataNascimento}',
