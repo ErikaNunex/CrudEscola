@@ -72,7 +72,7 @@ class AlunoController extends AbstractController
         $id = $_GET['id'];
         $rep = new AlunoRepository();
         $aluno = $rep->buscarUm($id);
-        $this->render('aluno/editar', [$aluno]);
+        $this->render('aluno/editar', [$aluno]); 
         if (false === empty($_POST)) {
             $aluno->nome = $_POST['nome'];
             $aluno->dataNascimento = $_POST['nascimento'];
@@ -102,7 +102,7 @@ class AlunoController extends AbstractController
         $id = $_GET['id'];
 
         $this->repository->excluir($id);
-        
+         
         $this->redirect('/alunos/listar');
 
     }

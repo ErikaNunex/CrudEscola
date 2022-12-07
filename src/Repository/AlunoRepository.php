@@ -67,7 +67,7 @@ class AlunoRepository implements RepositoryInterface
         $sql = "UPDATE " . self::TABLE .  
             " SET 
                 nome='{$novosDados->nome}', 
-                email='{$novosDados->email}',
+                email='{$novosDados->email}', 
                 cpf='{$novosDados->cpf}',
                 dataNascimento='{$novosDados->dataNascimento}',
                 genero='{$novosDados->genero}' 
@@ -79,7 +79,7 @@ class AlunoRepository implements RepositoryInterface
     }
 
     public function excluir(string $id): void
-    {
+    { 
         $sql = "DELETE FROM ".self::TABLE." WHERE id = '{$id}'";
         $query = $this->pdo->query($sql);
         $query->execute();

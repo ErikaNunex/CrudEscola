@@ -28,6 +28,8 @@ $rotas = [
 
     '/usuarios/listar' => criarRota(UserController::class, 'list'),
     '/usuarios/novo' => criarRota(UserController::class, 'add'),
+    '/usuarios/excluir' => criarRota(UserController::class, 'delete'),
+    '/usuarios/editar' => criarRota(UserController::class, 'toEdit'),
 
     '/login' => criarRota(AuthController::class, 'login'),
     '/desconectar' => criarRota(AuthController::class, 'logout'),

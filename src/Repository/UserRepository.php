@@ -28,6 +28,16 @@ class UserRepository
 
         return $query->fetchObject(User::class);
     }
+    
+    public function findOne(string $id): object
+    {
+        $sql = "SELECT * FROM ".self::TABLE." WHERE id='{$id}'";
+
+        $query = $this->pdo->query($sql);
+        $query->execute();
+
+        return $query->fetchObject(User::class);
+    }
 
     public function findAll(): iterable
     {
@@ -48,5 +58,25 @@ class UserRepository
         $this->pdo->query($sql);
 
         return $user;
+    }
+    public function update(object $newData, string $id):object
+    {
+        $sql = "UPDATE ".self::TABLE.
+        "SET
+        id='{$newData->id}',
+        name='{$newData->name}',
+        email='{$newData->email}',
+        password='{$newData->password}',
+        profile='{$newData->profile}'
+        WHERE id = '{$id}';";
+        $this->pdo->query($sql);
+
+        return $newData;
+    }
+    public function delete(string $id):void
+    {
+        $sql = "DELETE FROM ".self::TABLE." WHERE id = '{$id}'";
+        $query = $this->pdo->query($sql);
+        $query->execute();
     }
 }

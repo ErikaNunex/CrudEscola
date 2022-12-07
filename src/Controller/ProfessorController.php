@@ -83,7 +83,6 @@ class ProfessorController extends AbstractController
             } catch (Exception $exception) {
                 if (true === str_contains($exception->getMessage(), 'cpf')) {
                     WebNotification::add('Professor já cadastrado', 'danger');
-                    $this->redirect('/professores/editar');
                     return;
                 }
     

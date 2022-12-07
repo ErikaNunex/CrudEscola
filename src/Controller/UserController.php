@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\User;
+use App\Notification\WebNotification;
 use App\Repository\UserRepository;
+
+use Exception;
 
 class UserController extends AbstractController
 {
@@ -45,4 +48,40 @@ class UserController extends AbstractController
 
         $this->redirect('/usuarios/listar');
     }
+    public function toEdit():void
+    {
+        $this->checkLogin();
+        $id = $_GET['id'];
+        $rep = new UserRepository;
+        $user = $this->repository->findOne($id);
+        $this->render('user/edit', [$user]);
+        if (false === empty($_POST)) {
+            $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
+            $user->name = $_POST['name'];
+            $user->email = $_POST['email'];
+            $user->password = $password;
+            $user->profile = $_POST['profile'];
+    
+            try {
+                $rep->update($user, $id);
+            } catch (Exception $exception) {
+                if (true === str_contains($exception->getMessage(), 'email')) {
+                    WebNotification::add('Usuario já cadastrado', 'danger');
+                    return;
+                }
+    
+                die('Vish, aconteceu um erro');
+            }
+            WebNotification::add('Cadastro Atualizado', 'success');
+            $this->redirect('/usuarios/listar');
+        };
+        
+    }
+    public function delete():void
+    {
+         $id= $_GET['id'];
+         $this->repository->delete($id);
+         $this->redirect('/usuarios/listar');
+    }
+
 }
